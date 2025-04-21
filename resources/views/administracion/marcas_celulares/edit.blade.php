@@ -9,9 +9,9 @@
     </div>
     <div class="mb-3">
         <label for="descripcion" class="col-form-label">Descripción:</label>
-        <textarea class="form-control" id="descripcion" name="descripcion" required minlength="10" maxlength="500">{{ $marca->descripcion }}</textarea>
-        <div class="invalid-feedback">
+        <textarea class="form-control" id="descripcion" name="descripcion" minlength="2" maxlength="500">{{ $marca->descripcion }}</textarea>
+        {{--  <div class="invalid-feedback">
             La descripción debe tener entre 10 y 500 caracteres.
-        </div>
+        </div>  --}}
     </div>
 </form>

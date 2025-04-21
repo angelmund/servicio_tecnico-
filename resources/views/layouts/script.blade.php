@@ -141,28 +141,6 @@
                 }
             });
 
-            // Manejo del modal de eliminar
-            const eliminarModal = document.getElementById('eliminar');
-            if (eliminarModal) {
-                eliminarModal.addEventListener('show.bs.modal', function(event) {
-                    const button = event.relatedTarget;
-                    const id = button.getAttribute('data-id');
-                    const deleteUrl = button.getAttribute('data-delete-url');
-
-                    if (id && deleteUrl) {
-                        const form = this.querySelector('#form-eliminar');
-                        form.action = `${deleteUrl}/${id}`;
-                    } else {
-                        console.error('ID o URL de eliminación no proporcionados');
-                    }
-                });
-
-                // Limpia el formulario al cerrarse
-                eliminarModal.addEventListener('hidden.bs.modal', function() {
-                    const form = this.querySelector('#form-eliminar');
-                    form.action = '';
-                });
-            }
         });
     </script>
     <!-- Datatables -->

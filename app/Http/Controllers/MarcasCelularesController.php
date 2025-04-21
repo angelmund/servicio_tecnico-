@@ -231,7 +231,7 @@ class MarcasCelularesController extends Controller
                 'message' => 'Marca actualizada
                 con éxito',
                 'marca' => $marca,
-                'Noti' => 2 // Manjear el tipo de notificación 2 cuando se actualiza un registro
+                'Noti' => 2 // Manejar el tipo de notificación 2 cuando se edita un registro
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
@@ -259,5 +259,87 @@ class MarcasCelularesController extends Controller
         return redirect()->route('login')->withErrors([
             'auth' => 'Debe iniciar sesión para realizar esta acción.',
         ]);
+    }
+    protected function activar(MarcaCelular $marca)
+    {
+        try {
+            DB::beginTransaction();
+            $marca->activo = true;
+            $marca->save();
+            DB::commit();
+            return [
+                'success' => true,
+                'message' => 'Marca activada con éxito',
+                'Noti' => 1
+            ];
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return [
+                'success' => false,
+                'message' => 'Error al activar la marca de celular',
+                'error' => $e->getMessage()
+            ];
+        }
+    }
+
+    protected function desactivar(MarcaCelular $marca)
+    {
+        try {
+            DB::beginTransaction();
+            $marca->activo = false;
+            $marca->save();
+            DB::commit();
+            return [
+                'success' => true,
+                'message' => 'Marca desactivada con éxito',
+                'Noti' => 1
+            ];
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return [
+                'success' => false,
+                'message' => 'Error al desactivar la marca de celular',
+                'error' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function activarDesactivarMarca(Request $request, $id)
+    {
+        if (Auth::check()) {
+            $marca = MarcaCelular::findOrFail($id);
+            $accion = $request->input('action');
+
+            if ($accion === 'desactivar' && $marca->activo) {
+                $result = $this->desactivar($marca);
+            } elseif ($accion === 'activar' && !$marca->activo) {
+                $result = $this->activar($marca);
+            } else {
+                return response()->json([
+                    'message' => 'Acción no válida o no necesaria',
+                    'Noti' => 0
+                ], 400);
+            }
+
+            if ($result['success']) {
+                $marca->refresh(); // Recargar el modelo para obtener los datos actualizados
+                return response()->json([
+                    'message' => $result['message'],
+                    'Noti' => $result['Noti'],
+                    'marca' => $marca,
+                ]);
+            } else {
+                return response()->json([
+                    'message' => $result['message'],
+                    'error' => $result['error'],
+                    'Noti' => 0
+                ], 500);
+            }
+        }
+
+        return response()->json([
+            'message' => 'Debe iniciar sesión para realizar esta acción.',
+            'Noti' => 0
+        ], 401);
     }
 }

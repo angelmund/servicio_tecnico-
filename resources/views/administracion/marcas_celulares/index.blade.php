@@ -33,8 +33,9 @@
                                         <td>{{ $marca->descripcion }}</td>
                                         <td>
                                             @if ($marca->logo)
-                                                <img src="{{ asset('storage/'. $marca->logo) }}" alt="Logo"
-                                                     class="img-thumbnail img-fluid" style="max-width: 80px; max-height: 80px;">
+                                                <img src="{{ asset('storage/' . $marca->logo) }}" alt="Logo"
+                                                    class="img-thumbnail img-fluid"
+                                                    style="max-width: 80px; max-height: 80px;">
                                             @else
                                                 <span class="badge badge-secondary">Sin logo</span>
                                             @endif
@@ -54,7 +55,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>
-                                                        <a class="dropdown-item btn btn-success btn-crear"
+                                                        <a class="dropdown-item btn btn-info btn-crear"
                                                             data-bs-toggle="modal" data-bs-target="#crear"
                                                             data-form-url="{{ route('MarcasCelularesCreate') }}">
                                                             <i class="fas fa-plus"></i> Crear
@@ -65,12 +66,13 @@
                                                             data-form-url="{{ route('MarcasCelularesEdit', [$marca->id, '']) }}">
                                                             <i class="fas fa-edit"></i> Editar
                                                         </a>
-
-                                                        <a class="dropdown-item btn btn-danger btn-eliminar"
-                                                            data-bs-toggle="modal" data-bs-target="#eliminar"
-                                                            data-id="{{ $marca->id }}" data-delete-url="{{route('MarcasCelularesDelete', [$marca->id, ''])}}">
-                                                            <i class="fas fa-trash-alt"></i> Eliminar
-                                                        </a>
+                                                        <a class="dropdown-item btn {{ $marca->activo ? 'btn-danger' : 'btn-success' }} btn-cambiar-estado"
+                                                            data-id="{{ $marca->id }}"
+                                                            data-action="{{ $marca->activo ? 'desactivar' : 'activar' }}"
+                                                            data-url="{{ route('MarcasCelularescambiarEstado', $marca->id) }}">
+                                                             <i class="fas fa-{{ $marca->activo ? 'times-circle' : 'bolt' }}"></i>
+                                                             {{ $marca->activo ? 'Desactivar' : 'Activar' }}
+                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -79,7 +81,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                       
+
                     </div>
                 </div>
             </div>
@@ -92,10 +94,10 @@
     <script src="{{ asset('assets/js/admin/marcas_celulares/app.js') }}"></script>
     <script>
         const routes = {
-            MarcasCelularesCreate: '{{ route("MarcasCelularesCreate") }}',
-            MarcasCelularesEdit: '{{ route("MarcasCelularesEdit", ":id") }}',
-            MarcasCelularesDelete: '{{ route("MarcasCelularesDelete", ":id") }}'
+            MarcasCelularesCreate: '{{ route('MarcasCelularesCreate') }}',
+            MarcasCelularesEdit: '{{ route('MarcasCelularesEdit', ':id') }}',
+            MarcasCelularescambiarEstado: '{{ route('MarcasCelularescambiarEstado', ':id') }}'
         };
     </script>
-    <script src="{{ asset('assets/js/admin/marcas_celulares/paginacion.js')}}"></script>
+    <script src="{{ asset('assets/js/admin/marcas_celulares/paginacion.js') }}"></script>
 @endpush

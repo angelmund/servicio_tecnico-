@@ -101,14 +101,18 @@ function generateActionButtons(data, routes) {
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <a class="dropdown-item btn btn-success btn-crear" data-bs-toggle="modal" data-bs-target="#crear" data-form-url="${routes.create}">
+                    <a class="dropdown-item btn btn-info btn-crear" data-bs-toggle="modal" data-bs-target="#crear" data-form-url="${routes.create}">
                         <i class="fas fa-plus"></i> Crear
                     </a>
                     <a class="dropdown-item btn btn-warning btn-editar" data-bs-toggle="modal" data-bs-target="#editar" data-id="${data.id}" data-form-url="${routes.edit.replace(':id', data.id)}">
                         <i class="fas fa-edit"></i> Editar
                     </a>
-                    <a class="dropdown-item btn btn-danger btn-eliminar" data-bs-toggle="modal" data-bs-target="#eliminar" data-id="${data.id}" data-delete-url="${routes.delete.replace(':id', data.id)}">
-                        <i class="fas fa-trash-alt"></i> Eliminar
+                    <a class="dropdown-item btn ${data.activo ? 'btn-danger' : 'btn-success'} btn-cambiar-estado"
+                       data-id="${data.id}
+                       data-action="${data.activo ? 'desactivar' : 'activar'}"
+                       data-url="${routes.cambiarEstado.replace(':id', data.id)}">
+                        <i class="fas fa-${data.activo ? 'times-circle' : 'bolt'}"></i>
+                        ${data.activo ? 'Desactivar' : 'Activar'}
                     </a>
                 </li>
             </ul>

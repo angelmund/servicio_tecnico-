@@ -4,7 +4,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="w-100 text-center position-relative">
-                    <h1 class="modal-title fs-2 text-primary" id="crearLabel">Crear</h1>
+                    <h1 class="modal-title fs-2 text-primary" id="crearLabel">
+                        <i class="fas fa-plus-circle me-2"></i> Crear
+                    </h1>
                     <button type="button" class="btn-close position-absolute top-50 end-0 translate-middle-y"
                         data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -13,8 +15,8 @@
                 <!-- Aquí se insertará el formulario dinámicamente -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 <button id="btn-guardar" type="button" class="btn btn-secondary btn-guardar">Guardar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -26,7 +28,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="w-100 text-center position-relative">
-                    <h1 class="modal-title fs-2 text-warning" id="editarLabel">Editar</h1>
+                    <h1 class="modal-title fs-2 text-warning" id="editarLabel">
+                        <i class="fas fa-edit me-2"></i> Editar
+                    </h1>
                     <button type="button" class="btn-close position-absolute top-50 end-0 translate-middle-y"
                         data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -35,35 +39,57 @@
                 <!-- Aquí se insertará el formulario dinámicamente -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 <button id="btn-actualizar" type="button" class="btn btn-secondary btn-actualizar">Actualizar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Desactivar -->
+<div class="modal fade" id="cambiarEstado" tabindex="-1" aria-labelledby="desactivarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="w-100 text-center position-relative">
+                    <h1 class="modal-title fs-2 text-danger" id="desactivarLabel">
+                        <i class="fas fa-trash-alt me-2"></i> Desactivar
+                    </h1>
+                    <button type="button" class="btn-close position-absolute top-50 end-0 translate-middle-y"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h3 class="text-black">¿Está seguro de desactivar este registro?</h3>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-desactivar" type="button" class="btn btn-danger btn-desactivar">Desactivar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Modal para Eliminar -->
-<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminarLabel" aria-hidden="true">
+<!-- Modal para Activar -->
+<div class="modal fade" id="activar" tabindex="-1" aria-labelledby="activarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div свої="w-100 text-center position-relative">
-                    <h1 class="modal-title fs-2 text-danger" id="eliminarLabel">Eliminar</h1>
+                <div class="w-100 text-center position-relative">
+                    <h1 class="modal-title fs-2 text-success" id="activarLabel">
+                        <i class="fas fa-check-circle me-2"></i> Activar
+                    </h1>
                     <button type="button" class="btn-close position-absolute top-50 end-0 translate-middle-y"
                         data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             </div>
             <div class="modal-body">
-                ¿Estás seguro de que deseas eliminar este registro?
+                ¿Está seguro de activar este registro?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form id="form-eliminar" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
+                <button id="btn-activar" type="button" class="btn btn-success btn-activar">Activar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

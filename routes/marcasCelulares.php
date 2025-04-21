@@ -8,4 +8,4 @@ Route::get('/create', [App\Http\Controllers\MarcasCelularesController::class, 'c
 Route::get('/edit/{marca}', [App\Http\Controllers\MarcasCelularesController::class, 'edit'])->name('Edit');
 Route::post('/store/marcaCelular', [App\Http\Controllers\MarcasCelularesController::class,'store'])->name('Store');
 Route::post('/update/marcaCelular/{marca}', [App\Http\Controllers\MarcasCelularesController::class,'update'])->name('Update');
-Route::post('/destroy/marcaCelular/{marca}', [App\Http\Controllers\MarcasCelularesController::class,'destroy'])->name('Delete');
+Route::post('/destroy/marcaCelular/{id}', [App\Http\Controllers\MarcasCelularesController::class,'activarDesactivarMarca'])->name('cambiarEstado');

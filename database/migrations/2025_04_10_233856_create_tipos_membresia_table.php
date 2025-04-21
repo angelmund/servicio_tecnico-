@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tipos_membresia', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->text('descripcion')->nullable();
             $table->integer('duracion_dias');
             $table->decimal('precio', 10, 2);
             $table->boolean('activo')->default(true);
