@@ -1,8 +1,8 @@
-<form id="validar" action="{{route('MarcasCelularesStore')}}" method="POST" novalidate>
+<form id="validar" action="{{route('MarcasStore')}}" method="POST" novalidate>
     @csrf
     <div class="mb-3">
         <label for="nombre" class="col-form-label">Marca:</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" required minlength="2" maxlength="255">
+        <input type="text" class="form-control" id="nombre" name="nombre" required minlength="2" maxlength="255" placeholder="Ej: Samsung">
         <div class="invalid-feedback">
             Por favor, ingresa una marca válida (entre 2 y 255 caracteres).
         </div>

@@ -8,6 +8,7 @@ class EstadoReparacion extends Model
 {
     protected $table = 'estados_reparacion';
     protected $fillable = [
+        'id',
         'nombre',
         'descripcion',
         'created_at',

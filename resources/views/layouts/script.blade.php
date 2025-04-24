@@ -107,11 +107,10 @@
                         const button = event.relatedTarget; // Botón que abrió el modal
                         const formUrl = button.getAttribute('data-form-url'); // URL del formulario
                         const id = button.getAttribute('data-id'); // ID del registro (para editar)
-
                         modalBody.innerHTML = '<p>Cargando...</p>'; // Indicador de carga
 
                         if (formUrl) {
-                            const url = id && modalId === 'editar' ? `${formUrl}/` : formUrl;
+                            const url = id && modalId === 'editar' ? formUrl : formUrl;
 
                             fetch(url)
                                 .then(response => {
@@ -126,7 +125,7 @@
                                 .catch(error => {
                                     console.error(error);
                                     modalBody.innerHTML =
-                                        '<p>Error al cargar el formulario</p>';
+                                        '<p class="text-danger">Error al cargar el formulario</p>';
                                 });
                         } else {
                             console.error('URL del formulario no proporcionada');

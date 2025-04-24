@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                    <h4 class="card-title text-center">Marcas de Celulares</h4>
+                    <h4 class="card-title text-center">Estados de reparaci&oacute;n</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -13,8 +13,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>descripci&oacute;n</th>
-                                    <th>Logo</th>
-                                    <th>Activo</th>
+                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -27,21 +26,12 @@
                                 </tr>
                             </tfoot>  --}}
                             <tbody>
-                                @foreach ($marcas as $marca)
+                                @foreach ($estados_reparacion as $estado_reparacion)
                                     <tr>
-                                        <td>{{ $marca->nombre }}</td>
-                                        <td>{{ $marca->descripcion }}</td>
+                                        <td>{{ $estado_reparacion->nombre }}</td>
+                                        <td>{{ $estado_reparacion->descripcion }}</td>
                                         <td>
-                                            @if ($marca->logo)
-                                                <img src="{{ asset('storage/' . $marca->logo) }}" alt="Logo"
-                                                    class="img-thumbnail img-fluid"
-                                                    style="max-width: 80px; max-height: 80px;">
-                                            @else
-                                                <span class="badge badge-secondary">Sin logo</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($marca->activo == 1)
+                                            @if ($estado_reparacion->activo == 1)
                                                 <span class="badge badge-success">Activo</span>
                                             @else
                                                 <span class="badge badge-danger">Inactivo</span>
@@ -57,22 +47,23 @@
                                                     <li>
                                                         <a class="dropdown-item btn btn-info btn-crear"
                                                             data-bs-toggle="modal" data-bs-target="#crear"
-                                                            data-form-url="{{ route('MarcasCelularesCreate') }}">
+                                                            data-form-url="{{ route('estadosReparacionCreate') }}">
                                                             <i class="fas fa-plus"></i> Crear
                                                         </a>
                                                         <a class="dropdown-item btn btn-warning btn-editar"
                                                             data-bs-toggle="modal" data-bs-target="#editar"
-                                                            data-id="{{ $marca->id }}"
-                                                            data-form-url="{{ route('MarcasCelularesEdit', [$marca->id, '']) }}">
+                                                            data-id="{{ $estado_reparacion->id }}"
+                                                            data-form-url="{{ route('estadosReparacionEdit', ['id' => $estado_reparacion->id]) }}">
                                                             <i class="fas fa-edit"></i> Editar
                                                         </a>
-                                                        <a class="dropdown-item btn {{ $marca->activo ? 'btn-danger' : 'btn-success' }} btn-cambiar-estado"
-                                                            data-id="{{ $marca->id }}"
-                                                            data-action="{{ $marca->activo ? 'desactivar' : 'activar' }}"
-                                                            data-url="{{ route('MarcasCelularescambiarEstado', $marca->id) }}">
-                                                             <i class="fas fa-{{ $marca->activo ? 'times-circle' : 'bolt' }}"></i>
-                                                             {{ $marca->activo ? 'Desactivar' : 'Activar' }}
-                                                         </a>
+                                                        <a class="dropdown-item btn {{ $estado_reparacion->activo ? 'btn-danger' : 'btn-success' }} btn-cambiar-estado"
+                                                            data-id="{{ $estado_reparacion->id }}"
+                                                            data-action="{{ $estado_reparacion->activo ? 'desactivar' : 'activar' }}"
+                                                            data-url="{{ route('estadosReparacioncambiarEstado', $estado_reparacion->id) }}">
+                                                            <i
+                                                                class="fas fa-{{ $estado_reparacion->activo ? 'times-circle' : 'bolt' }}"></i>
+                                                            {{ $estado_reparacion->activo ? 'Desactivar' : 'Activar' }}
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -91,13 +82,12 @@
 
 
 @push('scripts')
-    <script src="{{ asset('assets/js/admin/marcas_celulares/app.js') }}"></script>
+    <script src="{{ asset('assets/js/admin/estados_reparacion/app.js') }}"></script>
     <script>
         const routes = {
-            MarcasCelularesCreate: '{{ route('MarcasCelularesCreate') }}',
-            MarcasCelularesEdit: '{{ route('MarcasCelularesEdit', ':id') }}',
-            MarcasCelularescambiarEstado: '{{ route('MarcasCelularescambiarEstado', ':id') }}'
+            estadosReparacionCreate: '{{ route('estadosReparacionCreate') }}',
+            estadosReparacionEdit: '{{ route('estadosReparacionEdit', ['id' => ':id']) }}',
+            estadosReparacioncambiarEstado: '{{ route('estadosReparacioncambiarEstado', ['id' => ':id']) }}'
         };
     </script>
-    <script src="{{ asset('assets/js/admin/marcas_celulares/paginacion.js') }}"></script>
 @endpush

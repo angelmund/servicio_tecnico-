@@ -1,4 +1,4 @@
-let tablaMarcasCelulares;
+let tablaMarcas;
 
 function enviarFormulario(formulario) {
     return new Promise((resolve, reject) => {
@@ -29,15 +29,15 @@ function enviarFormulario(formulario) {
                     reject(new Error(errorMessage));
                 } else if (data.Noti == 1) {
                     alertarExito(data.message);
-                    agregarRegistroTablaMarcasCelulares(data);
+                    agregarRegistroTablaMarcas(data);
                     resolve(data);
                 } else if (data.Noti == 2) {
                     alertarExito(data.message);
-                    actualizarTablaMarcasCelulares(data);
+                    actualizarTablaMarcas(data);
                     resolve(data);
                 } else {
                     alertarInfo(data.message || "Operación completada");
-                    actualizarTablaMarcasCelulares(data);
+                    actualizarTablaMarcas(data);
                     resolve(data);
                 }
             })
@@ -50,7 +50,7 @@ function enviarFormulario(formulario) {
 }
 
 //función para agregar el nuevo registro a la tabla
-function agregarRegistroTablaMarcasCelulares(data) {
+function agregarRegistroTablaMarcas(data) {
     const columnConfig = [
         { field: "nombre", type: "text" },
         { field: "descripcion", type: "text" },
@@ -59,9 +59,9 @@ function agregarRegistroTablaMarcasCelulares(data) {
         {
             type: "actions",
             routes: {
-                create: routes.MarcasCelularesCreate,
-                edit: routes.MarcasCelularesEdit,
-                cambiarEstado : routes.MarcasCelularescambiarEstado,
+                create: routes.MarcasCreate,
+                edit: routes.MarcasEdit,
+                cambiarEstado : routes.MarcascambiarEstado,
             },
         },
     ];
@@ -70,7 +70,7 @@ function agregarRegistroTablaMarcasCelulares(data) {
 }
 
 //función para actualizar la tabla con los datos actualizados
-function actualizarTablaMarcasCelulares(data) {
+function actualizarTablaMarcas(data) {
     const columnConfig = [
         { field: "nombre", type: "text" },
         { field: "descripcion", type: "text" },
@@ -79,9 +79,9 @@ function actualizarTablaMarcasCelulares(data) {
         {
             type: "actions",
             routes: {
-                create: routes.MarcasCelularesCreate,
-                edit: routes.MarcasCelularesEdit,
-                cambiarEstado : routes.MarcasCelularescambiarEstado,
+                create: routes.MarcasCreate,
+                edit: routes.MarcasEdit,
+                cambiarEstado : routes.MarcascambiarEstado,
             },
         },
     ];
@@ -91,9 +91,9 @@ function actualizarTablaMarcasCelulares(data) {
 
 document.addEventListener("DOMContentLoaded", function () {
     if (!$.fn.DataTable.isDataTable("#datatables")) {
-        tablaMarcasCelulares = initDataTable("datatables");
+        tablaMarcas = initDataTable("datatables");
     } else {
-        tablaMarcasCelulares = $("#datatables").DataTable();
+        tablaMarcas = $("#datatables").DataTable();
     }
 
     ["btn-guardar", "btn-actualizar"].forEach((btnId) => {
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function cambiarEstado(id, url, action) {
         mostrarConfirmacion(
-            `¿Deseas ${action} la marca celular con ID ${id}?`,
+            `¿Deseas ${action} la marca celular?`,
             () => {
                 return new Promise((resolve, reject) => {
                     fetch(url, {
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         .then((data) => {
                             if (data.Noti === 1) {
                                 alertarExito(data.message);
-                                actualizarTablaMarcasCelulares(data);
+                                actualizarTablaMarcas(data);
                                 resolve(data);
                             } else {
                                 alertarError(data.message || "Error en la operación");

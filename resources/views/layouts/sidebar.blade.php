@@ -29,8 +29,11 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('MarcasCelularesIndex')}}"><i class="fas fa-mobile"></i> Marcas celulares
+                                <a href="{{ route('MarcasIndex')}}"><i class="fas fa-mobile"></i> Marcas celulares
                                 </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('estadosReparacionIndex')}}"><i class="fas fa-cogs"></i> Estados de Reparación</a>
                             </li>
                             
                         </ul>

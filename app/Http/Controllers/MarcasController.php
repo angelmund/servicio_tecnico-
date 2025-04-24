@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MarcaCelular;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -13,12 +13,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
-class MarcasCelularesController extends Controller
+class MarcasController extends Controller
 {
     // public function index(Request $request)
     // {
     //     if ($request->ajax()) {
-    //         $marcas = MarcaCelular::query();
+    //         $marcas = Marca::query();
     //         return DataTables::of($marcas)
     //             ->addColumn('action', function ($marca) {
     //                 $actionBtn = '<div class="btn-group dropdown">';
@@ -33,15 +33,15 @@ class MarcasCelularesController extends Controller
     //             ->rawColumns(['action'])
     //             ->make(true);
     //     }
-    //     return view('administracion.marcas_celulares.index');
+    //     return view('administracion.marcas.index');
     // }
 
     public function index()
     {
         // Verificar si el usuario está autenticado
         if (Auth::check()) {
-            $marcas = MarcaCelular::all();
-            return view('administracion.marcas_celulares.index', compact('marcas'));
+            $marcas = Marca::all();
+            return view('administracion.marcas.index', compact('marcas'));
         }
         // Si el usuario no está autenticado, redirige o devuelve un error
         return redirect()->route('login')->withErrors([
@@ -54,7 +54,7 @@ class MarcasCelularesController extends Controller
     {
         // Verificar si el usuario está autenticado
         if (Auth::check()) {
-            return view('administracion.marcas_celulares.create');
+            return view('administracion.marcas.create');
         }
         // Si el usuario no está autenticado, redirige o devuelve un error
         return redirect()->route('login')->withErrors([
@@ -74,7 +74,7 @@ class MarcasCelularesController extends Controller
                         'required',
                         'string',
                         'max:255',
-                        Rule::unique('marcas_celulares')->ignore($request->id),
+                        Rule::unique('marcas')->ignore($request->id),
                     ],
                     'descripcion' => 'nullable|string', // Cambiado de 'text' a 'string'
                     'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Aumentado el tamaño máximo a 2MB
@@ -98,7 +98,7 @@ class MarcasCelularesController extends Controller
 
             DB::beginTransaction();
 
-            $marca = new MarcaCelular();
+            $marca = new Marca();
             $marca->nombre = $request->input('nombre');
             $marca->descripcion = $request->input('descripcion');
 
@@ -107,7 +107,7 @@ class MarcasCelularesController extends Controller
                 $logoName = time() . '.' . $logo->getClientOriginalExtension();
 
                 // Guardar la imagen en el almacenamiento
-                $path = Storage::disk('public')->putFileAs('marcas_celulares', $logo, $logoName);
+                $path = Storage::disk('public')->putFileAs('marcas', $logo, $logoName);
 
                 // Guardar la ruta relativa en la base de datos
                 $marca->logo = $path;
@@ -151,16 +151,16 @@ class MarcasCelularesController extends Controller
     }
 
 
-    public function edit(MarcaCelular $marca)
+    public function edit(Marca $marca)
     {
         // Verificar si el usuario está autenticado
         if (Auth::check()) {
             // Si el usuario está autenticado, devuelve la vista para editar la marca
-            $marca = MarcaCelular::findOrFail($marca->id);
+            $marca = Marca::findOrFail($marca->id);
             if (!$marca) {
                 return redirect()->route('marcasCelulares.index')->with('error', 'Marca no encontrada');
             }
-            return view('administracion.marcas_celulares.edit', compact('marca'));
+            return view('administracion.marcas.edit', compact('marca'));
         }
 
         // Si el usuario no está autenticado, redirige o devuelve un error
@@ -169,7 +169,7 @@ class MarcasCelularesController extends Controller
         ]);
     }
 
-    protected function guardarEdicion(Request $request, MarcaCelular $marca)
+    protected function guardarEdicion(Request $request, Marca $marca)
     {
         try {
             // Validar con regla de validación
@@ -180,7 +180,7 @@ class MarcasCelularesController extends Controller
                         'required',
                         'string',
                         'max:255',
-                        Rule::unique('marcas_celulares')->ignore($marca->id),
+                        Rule::unique('marcas')->ignore($marca->id),
                     ],
                     'descripcion' => 'nullable|string',
                     'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Aumentado el tamaño máximo a 2MB
@@ -217,7 +217,7 @@ class MarcasCelularesController extends Controller
                 $logoName = time() . '.' . $logo->getClientOriginalExtension();
 
                 // Guardar la nueva imagen en el almacenamiento
-                $path = Storage::disk('public')->putFileAs('marcas_celulares', $logo, $logoName);
+                $path = Storage::disk('public')->putFileAs('marcas', $logo, $logoName);
 
                 // Guardar la ruta relativa en la base de datos
                 $marca->logo = $path;
@@ -241,13 +241,13 @@ class MarcasCelularesController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
-                'message' => 'Error al actualizar la marca de celular',
+                'message' => 'Error al actualizar la marca',
                 'error' => $e->getMessage()
             ], 500);
         }
     }
 
-    public function update(Request $request, MarcaCelular $marca)
+    public function update(Request $request, Marca $marca)
     {
         // Verificar si el usuario está autenticado
         if (Auth::check()) {
@@ -260,7 +260,7 @@ class MarcasCelularesController extends Controller
             'auth' => 'Debe iniciar sesión para realizar esta acción.',
         ]);
     }
-    protected function activar(MarcaCelular $marca)
+    protected function activar(Marca $marca)
     {
         try {
             DB::beginTransaction();
@@ -276,13 +276,13 @@ class MarcasCelularesController extends Controller
             DB::rollBack();
             return [
                 'success' => false,
-                'message' => 'Error al activar la marca de celular',
+                'message' => 'Error al activar la marca',
                 'error' => $e->getMessage()
             ];
         }
     }
 
-    protected function desactivar(MarcaCelular $marca)
+    protected function desactivar(Marca $marca)
     {
         try {
             DB::beginTransaction();
@@ -298,7 +298,7 @@ class MarcasCelularesController extends Controller
             DB::rollBack();
             return [
                 'success' => false,
-                'message' => 'Error al desactivar la marca de celular',
+                'message' => 'Error al desactivar la marca',
                 'error' => $e->getMessage()
             ];
         }
@@ -307,7 +307,7 @@ class MarcasCelularesController extends Controller
     public function activarDesactivarMarca(Request $request, $id)
     {
         if (Auth::check()) {
-            $marca = MarcaCelular::findOrFail($id);
+            $marca = Marca::findOrFail($id);
             $accion = $request->input('action');
 
             if ($accion === 'desactivar' && $marca->activo) {

@@ -18,13 +18,12 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                    <i class="fas fa-users"></i>
-                                </div>
+                                   <a href="{{route('MarcasIndex')}}"><i class="fas fa-trademark"></i></a>                                </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Visitors</p>
-                                    <h4 class="card-title">1,294</h4>
+                                    <p class="card-category">Marcas</p>
+                                    <h4 class="card-title">10</h4>
                                 </div>
                             </div>
                         </div>
@@ -37,12 +36,12 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-info bubble-shadow-small">
-                                    <i class="fas fa-user-check"></i>
+                                    <a href="{{ route('estadosReparacionIndex')}}"><i class="fas fa-cogs"></i></a>
                                 </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Subscribers</p>
+                                    <p class="card-category">Estados de reparaci&oacute;n</p>
                                     <h4 class="card-title">1303</h4>
                                 </div>
                             </div>

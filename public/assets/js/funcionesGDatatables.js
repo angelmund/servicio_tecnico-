@@ -108,7 +108,7 @@ function generateActionButtons(data, routes) {
                         <i class="fas fa-edit"></i> Editar
                     </a>
                     <a class="dropdown-item btn ${data.activo ? 'btn-danger' : 'btn-success'} btn-cambiar-estado"
-                       data-id="${data.id}
+                       data-id="${data.id}"
                        data-action="${data.activo ? 'desactivar' : 'activar'}"
                        data-url="${routes.cambiarEstado.replace(':id', data.id)}">
                         <i class="fas fa-${data.activo ? 'times-circle' : 'bolt'}"></i>
