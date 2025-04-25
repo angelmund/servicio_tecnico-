@@ -1,3 +1,11 @@
+function formateoMoneda(precio) {
+    const numero = parseFloat(precio);
+    if (!isNaN(numero)) {
+        return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(numero);
+    }
+    return 'N/A';
+}
+
 // Función para actualizar la tabla DataTables
 // Esta función toma los datos y la configuración de columnas para actualizar la tabla
 function nuevoRegistroTabla(data, tableId, columnConfig = []) {
@@ -20,6 +28,8 @@ function nuevoRegistroTabla(data, tableId, columnConfig = []) {
         switch (column.type) {
             case 'text':
                 return datos[column.field] || '';
+            case 'moneda':
+                return `<span class="badge badge-info fw-bold fs-5">${formateoMoneda(datos[column.field])}</span>`;
             case 'image':
                 return datos[column.field]
                     ? `<img src="${datos[column.field].startsWith("http") ? datos[column.field] : `/storage/${datos[column.field]}`}" alt="${datos[column.altField] || ''}" class="img-thumbnail img-fluid" style="max-width: 80px; max-height: 80px;">`
@@ -63,6 +73,8 @@ function actualizarTabla(data, tableId, columnConfig = []) {
         switch (column.type) {
             case 'text':
                 return datos[column.field] || '';
+            case 'moneda':
+                return `<span class="badge badge-info fw-bold fs-5">${formateoMoneda(datos[column.field])}</span>`;
             case 'image':
                 return datos[column.field]
                     ? `<img src="${datos[column.field].startsWith("http") ? datos[column.field] : `/storage/${datos[column.field]}`}" alt="${datos[column.altField] || ''}" class="img-thumbnail img-fluid" style="max-width: 80px; max-height: 80px;">`

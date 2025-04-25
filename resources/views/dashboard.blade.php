@@ -74,12 +74,12 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                    <i class="far fa-check-circle"></i>
+                                    <a href="{{ route('ServiciosIndex')}}"><i class="fas fa-users-cog"></i></a>
                                 </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Order</p>
+                                    <p class="card-category">Servicios</p>
                                     <h4 class="card-title">576</h4>
                                 </div>
                             </div>

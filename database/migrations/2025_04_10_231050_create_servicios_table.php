@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('descripcion')->nullable();
             $table->decimal('precio', 10, 2)->default(0);
-            $table->string('imagen')->nullable();
+            $table->string('logo')->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });

@@ -29,7 +29,7 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('MarcasIndex')}}"><i class="fas fa-mobile"></i> Marcas celulares
+                                <a href="{{ route('MarcasIndex')}}"><i class="fas fa-trademark"></i> Marcas 
                                 </a>
                             </li>
                             <li>
@@ -37,6 +37,9 @@
                             </li>
                             <li>
                                 <a href="{{ route('tiposProductosIndex')}}"><i class="fas fa-boxes"></i> Tipos de productos</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('ServiciosIndex')}}"><i class="fas fa-users-cog"></i> Servicios</a>
                             </li>
                         </ul>
                     </div>

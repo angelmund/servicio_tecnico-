@@ -27,6 +27,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('tiposProductos') 
                 ->name('tiposProductos') 
                 ->group(base_path('routes/tiposProductos.php'));
+            // Añadimos la ruta para los tipos de servicios
+            Route::middleware(['web', 'auth'])
+                ->prefix('Servicios') 
+                ->name('Servicios') 
+                ->group(base_path('routes/servicios.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
