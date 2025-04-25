@@ -35,7 +35,9 @@
                             <li>
                                 <a href="{{ route('estadosReparacionIndex')}}"><i class="fas fa-cogs"></i> Estados de Reparación</a>
                             </li>
-                            
+                            <li>
+                                <a href="{{ route('tiposProductosIndex')}}"><i class="fas fa-boxes"></i> Tipos de productos</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

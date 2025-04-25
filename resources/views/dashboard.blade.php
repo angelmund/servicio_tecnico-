@@ -55,12 +55,12 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-success bubble-shadow-small">
-                                    <i class="fas fa-luggage-cart"></i>
+                                   <a href=" {{route('tiposProductosIndex')}}"><i class="fas fa-luggage-cart"></i></a>
                                 </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Sales</p>
+                                    <p class="card-category">Tipos de productos</p>
                                     <h4 class="card-title">$ 1,345</h4>
                                 </div>
                             </div>
