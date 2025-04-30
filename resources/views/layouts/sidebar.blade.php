@@ -41,6 +41,9 @@
                             <li>
                                 <a href="{{ route('ServiciosIndex')}}"><i class="fas fa-users-cog"></i> Servicios</a>
                             </li>
+                            <li>
+                                <a href="{{ route('estadosVentaIndex') }}"><i class="fas fa-exchange-alt"></i> Estados de ventas</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

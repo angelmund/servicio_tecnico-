@@ -32,6 +32,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('Servicios') 
                 ->name('Servicios') 
                 ->group(base_path('routes/servicios.php'));
+            // Añadimos la ruta para los estados de venta
+            Route::middleware(['web', 'auth'])
+                ->prefix('estadosVenta') 
+                ->name('estadosVenta') 
+                ->group(base_path('routes/estadosVenta.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

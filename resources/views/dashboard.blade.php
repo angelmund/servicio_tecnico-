@@ -18,7 +18,8 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                   <a href="{{route('MarcasIndex')}}"><i class="fas fa-trademark"></i></a>                                </div>
+                                    <a href="{{ route('MarcasIndex') }}"><i class="fas fa-trademark"></i></a>
+                                </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
@@ -36,7 +37,7 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-info bubble-shadow-small">
-                                    <a href="{{ route('estadosReparacionIndex')}}"><i class="fas fa-cogs"></i></a>
+                                    <a href="{{ route('estadosReparacionIndex') }}"><i class="fas fa-cogs"></i></a>
                                 </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
@@ -55,7 +56,7 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-success bubble-shadow-small">
-                                   <a href=" {{route('tiposProductosIndex')}}"><i class="fas fa-luggage-cart"></i></a>
+                                    <a href=" {{ route('tiposProductosIndex') }}"><i class="fas fa-luggage-cart"></i></a>
                                 </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
@@ -74,13 +75,34 @@
                         <div class="row align-items-center">
                             <div class="col-icon">
                                 <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                    <a href="{{ route('ServiciosIndex')}}"><i class="fas fa-users-cog"></i></a>
+                                    <a href="{{ route('ServiciosIndex') }}"><i class="fas fa-users-cog"></i></a>
                                 </div>
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">Servicios</p>
                                     <h4 class="card-title">576</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-warning bubble-shadow-small">
+                                    <a href="{{ route('estadosVentaIndex') }}"><i class="fas fa-exchange-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="col col-stats ms-3 ms-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">Estados de Ventas</p>
+                                    <h4 class="card-title">10</h4>
                                 </div>
                             </div>
                         </div>
