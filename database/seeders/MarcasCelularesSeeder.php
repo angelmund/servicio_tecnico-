@@ -41,7 +41,7 @@ class MarcasCelularesSeeder extends Seeder
         ];
 
         foreach ($marcas as $marca) {
-            \App\Models\MarcaCelular::create($marca);
+            \App\Models\Marca::create($marca);
         }
     }
 }

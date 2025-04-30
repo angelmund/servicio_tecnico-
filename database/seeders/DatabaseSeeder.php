@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        $this->call(AccesorioIngresoSeeder::class);
+        // $this->call(AccesorioIngresoSeeder::class);
         $this->call(EstadosReparacionSeeder::class);
         $this->call(EstadosVentaSeeder::class);
         $this->call(MarcasCelularesSeeder::class);
