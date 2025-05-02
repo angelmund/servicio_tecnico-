@@ -44,6 +44,9 @@
                             <li>
                                 <a href="{{ route('estadosVentaIndex') }}"><i class="fas fa-exchange-alt"></i> Estados de ventas</a>
                             </li>
+                            <li>
+                                <a href="{{ route('usuariosIndex') }}"><i class="fas fa-users"></i> Usuarios</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -16,12 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Administrador',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345678'),
-
-        ]);
+        
 
         // $this->call(AccesorioIngresoSeeder::class);
         $this->call(EstadosReparacionSeeder::class);
@@ -31,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SucursalesSeeder::class);
         $this->call(TipoProductosSeeder::class);
         $this->call(TiposMembresiaSeeder::class);
+        $this->call(RolesPermisosSeeder::class);
     }
 }

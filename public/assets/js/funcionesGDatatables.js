@@ -30,6 +30,8 @@ function nuevoRegistroTabla(data, tableId, columnConfig = []) {
                 return datos[column.field] || '';
             case 'moneda':
                 return `<span class="badge badge-info fw-bold fs-5">${formateoMoneda(datos[column.field])}</span>`;
+            case 'rol':
+                return getRoleBadge(datos[column.field]);
             case 'image':
                 return datos[column.field]
                     ? `<img src="${datos[column.field].startsWith("http") ? datos[column.field] : `/storage/${datos[column.field]}`}" alt="${datos[column.altField] || ''}" class="img-thumbnail img-fluid" style="max-width: 80px; max-height: 80px;">`
@@ -75,6 +77,8 @@ function actualizarTabla(data, tableId, columnConfig = []) {
                 return datos[column.field] || '';
             case 'moneda':
                 return `<span class="badge badge-info fw-bold fs-5">${formateoMoneda(datos[column.field])}</span>`;
+            case 'rol':
+                return getRoleBadge(datos[column.field]);
             case 'image':
                 return datos[column.field]
                     ? `<img src="${datos[column.field].startsWith("http") ? datos[column.field] : `/storage/${datos[column.field]}`}" alt="${datos[column.altField] || ''}" class="img-thumbnail img-fluid" style="max-width: 80px; max-height: 80px;">`
@@ -141,3 +145,15 @@ function generarRutas(modulo) {
     };
 }
 
+// Función auxiliar para generar el badge del rol
+function getRoleBadge(roleName) {
+    const roleBadges = {
+        'Super Administrador': 'primary',
+        'Administrador': 'success',
+        'Técnico': 'warning',
+        'Vendedor': 'info'
+    };
+
+    const badgeClass = roleBadges[roleName] || 'secondary';
+    return `<span class="badge badge-${badgeClass}">${roleName || 'Sin rol asignado'}</span>`;
+}
