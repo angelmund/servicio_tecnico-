@@ -11,6 +11,7 @@ class EstadoReparacion extends Model
         'id',
         'nombre',
         'descripcion',
+        // 'color',
         'created_at',
         'updated_at',
     ];

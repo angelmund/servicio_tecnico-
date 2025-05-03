@@ -1,3 +1,9 @@
+<style>
+    .form-control-color {
+        width: 40px !important;
+        height: 50px !important;
+    }
+</style>
 <form id="validar" action="{{route('estadosReparacionStore')}}" method="POST" novalidate>
     @csrf
     <div class="mb-3">
@@ -15,5 +21,14 @@
         </div>  --}}
     </div>
 
-</form>
+    {{--  <div class="mb-3">
+        <label for="color" class="form-label">Elije un color para este estado de reparación:</label>
+        <div class="input-group">
+            <input type="color" class="form-control form-control-color color" id="color" name="color" value="#68de0f" title="Elige un color" required>
+        </div>
+        <div class="invalid-feedback">
+            Por favor, selecciona un color para este estado de reparación.
+        </div>
+    </div>  --}}
 
+</form>
