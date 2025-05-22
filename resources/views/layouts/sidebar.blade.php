@@ -21,6 +21,15 @@
                     <h4 class="text-section">Administraci&oacute;n</h4>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('ordenesReparacionIndex') }}"><i class="fas fa-clipboard-list"></i><p>Orden de reparaci&oacute;n</p></a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Administraci&oacute;n</h4>
+                </li>
+                <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Admin</p>
@@ -29,20 +38,23 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('MarcasIndex')}}"><i class="fas fa-trademark"></i> Marcas 
+                                <a href="{{ route('MarcasIndex') }}"><i class="fas fa-trademark"></i> Marcas
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('estadosReparacionIndex')}}"><i class="fas fa-cogs"></i> Estados de Reparación</a>
+                                <a href="{{ route('estadosReparacionIndex') }}"><i class="fas fa-cogs"></i> Estados de
+                                    Reparación</a>
                             </li>
                             <li>
-                                <a href="{{ route('tiposProductosIndex')}}"><i class="fas fa-boxes"></i> Tipos de productos</a>
+                                <a href="{{ route('tiposProductosIndex') }}"><i class="fas fa-boxes"></i> Tipos de
+                                    productos</a>
                             </li>
                             <li>
-                                <a href="{{ route('ServiciosIndex')}}"><i class="fas fa-users-cog"></i> Servicios</a>
+                                <a href="{{ route('ServiciosIndex') }}"><i class="fas fa-users-cog"></i> Servicios</a>
                             </li>
                             <li>
-                                <a href="{{ route('estadosVentaIndex') }}"><i class="fas fa-exchange-alt"></i> Estados de ventas</a>
+                                <a href="{{ route('estadosVentaIndex') }}"><i class="fas fa-exchange-alt"></i> Estados
+                                    de ventas</a>
                             </li>
                             <li>
                                 <a href="{{ route('usuariosIndex') }}"><i class="fas fa-users"></i> Usuarios</a>

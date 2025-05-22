@@ -30,7 +30,7 @@ class SucursalesSeeder extends Seeder
                 'codigo_postal' => $faker->postcode,
                 'telefono' => $faker->phoneNumber,
                 'email' => $faker->companyEmail,
-                'encargado' => $faker->name,
+                'encargado_id' => 5,
                 'horarios' => json_encode([
                     'lunes' => ['apertura' => '09:00', 'cierre' => '18:00'],
                     'martes' => ['apertura' => '09:00', 'cierre' => '18:00'],

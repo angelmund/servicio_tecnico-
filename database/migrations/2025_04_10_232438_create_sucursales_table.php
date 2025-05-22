@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('codigo_postal');
             $table->string('telefono');
             $table->string('email')->nullable();
-            $table->string('encargado')->nullable();
+            $table->unsignedBigInteger('encargado_id')->nullable();
             $table->json('horarios')->nullable()->comment('Horarios de apertura y cierre para cada día de la semana')->default(json_encode([
                 'lunes' => ['apertura' => '09:00', 'cierre' => '18:00'],
                 'martes' => ['apertura' => '09:00', 'cierre' => '18:00'],
@@ -39,6 +39,8 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->text('regimen_fiscal')->nullable(); 
             $table->timestamps();
+
+            $table->foreign('encargado_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 

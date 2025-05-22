@@ -42,6 +42,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('usuarios') 
                 ->name('usuarios') 
                 ->group(base_path('routes/usuarios.php'));
+            // Añadimos la ruta para altas de servicios
+            Route::middleware(['web', 'auth'])
+                ->prefix('ordenesReparacion') 
+                ->name('ordenesReparacion') 
+                ->group(base_path('routes/ordenesReparacion.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

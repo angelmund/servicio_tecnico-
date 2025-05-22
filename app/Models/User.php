@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Membresia::class);
     }
+
+    public function sucursal()
+    {
+        return $this->belongsTo(Sucursal::class, 'encargado_id');
+    }
 }

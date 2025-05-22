@@ -22,7 +22,7 @@ class Sucursal extends Model
         'codigo_postal',
         'telefono',
         'email',
-        'encargado',
+        'encargado_id',
         'horarios',
         'activo',
         'regimen_fiscal'
@@ -46,4 +46,9 @@ class Sucursal extends Model
             "domingo": {"apertura": null, "cierre": null}
         }'
     ];
+
+    public function encargado()
+    {
+        return $this->belongsTo(User::class, 'encargado_id');
+    }
 }

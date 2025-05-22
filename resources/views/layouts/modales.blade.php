@@ -22,6 +22,29 @@
     </div>
 </div>
 
+<div class="modal fade modal-xl" id="crearL" tabindex="-1" aria-labelledby="crearLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="w-100 text-center position-relative">
+                    <h1 class="modal-title fs-2 text-primary" id="crearLabel">
+                        <i class="fas fa-plus-circle me-2"></i> Crear
+                    </h1>
+                    <button type="button" class="btn-close position-absolute top-50 end-0 translate-middle-y"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Aquí se insertará el formulario dinámicamente -->
+            </div>
+            <div class="modal-footer">
+                <button id="btnL_guardar" type="button" class="btn btn-secondary btn-guardar">Guardar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal para Editar -->
 <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="editarLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -97,7 +97,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Manejo de modales de crear y editar
-            ['crear', 'editar'].forEach(modalId => {
+            ['crear', 'editar', 'crearL'].forEach(modalId => {
                 const modal = document.getElementById(modalId);
                 if (modal) {
                     modal.addEventListener('show.bs.modal', function(event) {
@@ -105,7 +105,7 @@
                         const button = event.relatedTarget; // Botón que abrió el modal
                         const formUrl = button.getAttribute('data-form-url'); // URL del formulario
                         const id = button.getAttribute('data-id'); // ID del registro (para editar)
-                        modalBody.innerHTML = '<p>Cargando...</p>'; // Indicador de carga
+                        modalBody.innerHTML = '<p class="text-center text-success">Cargando...</p>'; // Indicador de carga
 
                         if (formUrl) {
                             const url = id && modalId === 'editar' ? formUrl : formUrl;
