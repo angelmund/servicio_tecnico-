@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-3 mb-3">
                 <label for="tipo_producto_id" class="col-form-label">Tipo de producto:</label>
-                <select class="form-control" id="tipo_producto_id" name="tipo_producto_id" required>
+                <select class="form-control tom-select" id="tipo_producto_id" name="tipo_producto_id" required>
                     <option value="" selected disabled>Elige una opción</option>Selecciona el tipo de producto
                     </option>
                     @foreach ($tipos_productos as $tipos_producto)
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-3 mb-3">
                 <label for="marca_id" class="col-form-label">Marca:</label>
-                <select class="form-control" id="marca_id" name="marca_id" required>
+                <select class="form-control tom-select" id="marca_id" name="marca_id" required>
                     <option value="" selected disabled>Elige una opción</option>Selecciona una marca</option>
                     @foreach ($marcas as $marca)
                         <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
@@ -63,7 +63,7 @@
 
             <div class="col-md-3 mb-3">
                 <label for="servicio_id" class="col-form-label">Servicio:</label>
-                <select class="form-control" id="servicio_id" name="servicio_id" required>
+                <select class="form-control tom-select" id="servicio_id" name="servicio_id" required>
                     <option value="" selected disabled>Seleccione un servicio</option>
                     @foreach ($servicios as $servicio)
                         <option value="{{ $servicio->id }}" data-precio="{{ $servicio->precio }}">{{ $servicio->nombre }} --

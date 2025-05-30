@@ -159,62 +159,62 @@
             </li>
             <li class="nav-item topbar-icon dropdown hidden-caret">
                 <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                    <i class="fas fa-layer-group"></i>
+                    <i class="fas fa-layer-group text-warning" title="Catálogos"></i>
                 </a>
                 <div class="dropdown-menu quick-actions animated fadeIn">
                     <div class="quick-actions-header">
-                        <span class="title mb-1">Quick Actions</span>
-                        <span class="subtitle op-7">Shortcuts</span>
+                        <span class="title mb-1">Opciones</span>
+                        <span class="subtitle op-7"></span>
                     </div>
                     <div class="quick-actions-scroll scrollbar-outer">
                         <div class="quick-actions-items">
                             <div class="row m-0">
-                                <a class="col-6 col-md-4 p-0" href="#">
-                                    <div class="quick-actions-item">
-                                        <div class="avatar-item bg-danger rounded-circle">
-                                            <i class="far fa-calendar-alt"></i>
-                                        </div>
-                                        <span class="text">Calendar</span>
-                                    </div>
-                                </a>
-                                <a class="col-6 col-md-4 p-0" href="#">
-                                    <div class="quick-actions-item">
-                                        <div class="avatar-item bg-warning rounded-circle">
-                                            <i class="fas fa-map"></i>
-                                        </div>
-                                        <span class="text">Maps</span>
-                                    </div>
-                                </a>
-                                <a class="col-6 col-md-4 p-0" href="#">
-                                    <div class="quick-actions-item">
-                                        <div class="avatar-item bg-info rounded-circle">
-                                            <i class="fas fa-file-excel"></i>
-                                        </div>
-                                        <span class="text">Reports</span>
-                                    </div>
-                                </a>
-                                <a class="col-6 col-md-4 p-0" href="#">
-                                    <div class="quick-actions-item">
-                                        <div class="avatar-item bg-success rounded-circle">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <span class="text">Emails</span>
-                                    </div>
-                                </a>
-                                <a class="col-6 col-md-4 p-0" href="#">
+                                <a class="col-6 col-md-4 p-0" href="{{ route('MarcasIndex') }}">
                                     <div class="quick-actions-item">
                                         <div class="avatar-item bg-primary rounded-circle">
-                                            <i class="fas fa-file-invoice-dollar"></i>
+                                            <i class="fas fa-trademark"></i>
                                         </div>
-                                        <span class="text">Invoice</span>
+                                        <span class="text">Marcas</span>
                                     </div>
                                 </a>
-                                <a class="col-6 col-md-4 p-0" href="#">
+                                <a class="col-6 col-md-4 p-0" href="{{ route('estadosReparacionIndex') }}">
+                                    <div class="quick-actions-item">
+                                        <div class="avatar-item bg-info rounded-circle">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <span class="text">Estados de Reparaciones</span>
+                                    </div>
+                                </a>
+                                <a class="col-6 col-md-4 p-0" href="{{ route('tiposProductosIndex') }}">
+                                    <div class="quick-actions-item">
+                                        <div class="avatar-item bg-success rounded-circle">
+                                            <i class="fas fa-boxes"></i>
+                                        </div>
+                                        <span class="text">Tipos de Productos</span>
+                                    </div>
+                                </a>
+                                <a class="col-6 col-md-4 p-0" href="{{ route('ServiciosIndex') }}">
                                     <div class="quick-actions-item">
                                         <div class="avatar-item bg-secondary rounded-circle">
-                                            <i class="fas fa-credit-card"></i>
+                                            <i class="fas fa-users-cog"></i>
                                         </div>
-                                        <span class="text">Payments</span>
+                                        <span class="text">Servicios</span>
+                                    </div>
+                                </a>
+                                <a class="col-6 col-md-4 p-0" href="{{ route('estadosVentaIndex') }}">
+                                    <div class="quick-actions-item">
+                                        <div class="avatar-item bg-warning rounded-circle">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <span class="text">Estados de Ventas</span>
+                                    </div>
+                                </a>
+                                <a class="col-6 col-md-4 p-0" href="{{ route('usuariosIndex') }}">
+                                    <div class="quick-actions-item">
+                                        <div class="avatar-item bg-danger rounded-circle">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <span class="text">Usuarios</span>
                                     </div>
                                 </a>
                             </div>

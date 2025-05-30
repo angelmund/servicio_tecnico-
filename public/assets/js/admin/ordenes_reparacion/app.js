@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (boton) {
             boton.addEventListener("click", function (event) {
                 event.preventDefault();
-                console.log("Botón clicado:", btnId);
+                // console.log("Botón clicado:", btnId);
                 const formulario = document.getElementById("validar");
                 if (!formulario) {
                     alertarError("Formulario no encontrado");

@@ -93,8 +93,32 @@
         fillColor: "rgba(255, 165, 52, .14)",
     });
 </script>
+<link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/js/tom-select.complete.min.js"></script>
 <! ----------script para llenar el body de los modales ----->
     <script>
+        function initializeTomSelect(container) {
+            var selectElements = container.querySelectorAll('.tom-select');
+            selectElements.forEach(function(selectElement) {
+                if (!selectElement.tomselect) {
+                    new TomSelect(selectElement, {
+                        create: true,
+                        sortField: {
+                            field: "text",
+                            direction: "asc"
+                        },
+                        plugins: ['remove_button'],
+                        onInitialize: function() {
+                            this.wrapper.classList.add('form-control');
+                        },
+                        onChange: function(value) {
+                            // Trigger validación cuando cambia el valor
+                            selectElement.dispatchEvent(new Event('change'));
+                        }
+                    });
+                }
+            });
+        }
         document.addEventListener('DOMContentLoaded', function() {
             // Manejo de modales de crear y editar
             ['crear', 'editar', 'crearL'].forEach(modalId => {
@@ -105,7 +129,8 @@
                         const button = event.relatedTarget; // Botón que abrió el modal
                         const formUrl = button.getAttribute('data-form-url'); // URL del formulario
                         const id = button.getAttribute('data-id'); // ID del registro (para editar)
-                        modalBody.innerHTML = '<p class="text-center text-success">Cargando...</p>'; // Indicador de carga
+                        modalBody.innerHTML =
+                            '<p class="text-center text-success">Cargando...</p>'; // Indicador de carga
 
                         if (formUrl) {
                             const url = id && modalId === 'editar' ? formUrl : formUrl;
@@ -119,6 +144,15 @@
                                 })
                                 .then(html => {
                                     modalBody.innerHTML = html;
+                                    initializeTomSelect(
+                                        modalBody
+                                    ); // Inicializa Tom Select después de cargar el contenido
+                                    setTimeout(() => {
+                                        const form = modalBody.querySelector('form');
+                                        if (form) {
+                                            validarFormulario(form);
+                                        }
+                                    }, 100);
                                 })
                                 .catch(error => {
                                     console.error(error);
@@ -137,7 +171,6 @@
                     });
                 }
             });
-
         });
     </script>
     <!-- Datatables -->

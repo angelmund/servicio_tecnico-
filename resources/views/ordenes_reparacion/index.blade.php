@@ -101,6 +101,7 @@
 
 @push('scripts')
     <script src="{{ asset('assets/js/admin/ordenes_reparacion/app.js') }}"></script>
+
     <script>
         const routes = {
             //estadosReparacionCreate: '{{ route('estadosReparacionCreate') }}',
